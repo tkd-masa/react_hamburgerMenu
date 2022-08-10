@@ -1,8 +1,133 @@
-.list button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  appearance: none;
+/* デスクトップ */
+@media (min-width: 768px) {
+  .btn {
+    display: none;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* お問い合わせの装飾 */
+  .inquiry {
+    color: #fff;
+    padding: 11px 26px 13px 26px;
+    background-color: #195cb8;
+    border-radius: 50px;
+  }
+}
+
+/* モバイル */
+@media (max-width: 767px) {
+  /* メニュー (オーバーレイ) */
+  .btn {
+    all: unset;
+    outline: revert;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    width: 20px;
+    height: 14px;
+    position: relative;
+    z-index: 200;
+  }
+
+  /* ハンバーガーメニューボタンのテキスト */
+  .btnText {
+    font-size: 10px;
+    display: inline-block;
+    transform: translateY(4px);
+  }
+
+  .open .btnText::before {
+    content: "CLOSE";
+  }
+
+  .close .btnText::before {
+    content: "MENU";
+  }
+
+  .close .btn {
+    color: #004bb1;
+  }
+
+  .open .btn {
+    color: white;
+  }
+
+  .btn {
+    display: grid;
+    place-items: center;
+  }
+
+  .btn::before,
+  .btn::after,
+  .btn .bar {
+    grid-area: 1 / 1;
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.4s;
+  }
+
+  .close .btn::before {
+    transform: translateY(-4px);
+  }
+
+  .close .btn::after {
+    transform: translateY(4px);
+  }
+
+  .open .btn::before {
+    transform: rotate(45deg);
+  }
+
+  .open .btn::after {
+    transform: rotate(-45deg);
+  }
+
+  .open .btn .bar {
+    transform: scale(0);
+  }
+
+  .list {
+    position: fixed;
+    inset: 0 -100% 0 -100%;
+    z-index: 100;
+    background: #004bb1;
+    color: white;
+    transition: transform 0.4s;
+  }
+
+  /* メニュー（オーバーレイ内の配置) */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .close .list {
+    transform: translateX(100%);
+  }
+
+  .list li:first-child {
+    margin-top: 110px;
+  }
+
+  .list button {
+    color: white;
+  }
+
+  /* お問い合わせの装飾 */
+  .inquiry {
+    color: #fff;
+    padding: 11px 79px 13px 80px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 50px;
+  }
 }
