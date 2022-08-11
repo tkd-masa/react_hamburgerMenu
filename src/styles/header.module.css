@@ -1,9 +1,13 @@
 .header {
+  position: fixed;
+  width: 100%;
+  top: 0;
   padding: 0 30px;
 }
 
 .flexContainer {
   composes: spaceBetween from "./utils.module.css";
+  position: relative;
   height: 70px;
 }
 
