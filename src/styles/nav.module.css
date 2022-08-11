@@ -1,13 +1,97 @@
 /* デスクトップ */
 @media (min-width: 768px) {
   .btn {
-    display: none;
+    all: unset;
+    outline: revert;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    z-index: 200;
+  }
+
+  /* ハンバーガーメニューボタンのテキスト */
+  .btnText {
+    font-size: 10px;
+    display: inline-block;
+    transform: translateY(4px);
+  }
+
+  .open .btnText::before {
+    content: "CLOSE";
+  }
+
+  .close .btnText::before {
+    content: "MENU";
+  }
+
+  .btn::before,
+  .btn::after,
+  .btn .bar {
+    grid-area: 1 / 1;
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: currentColor;
+    transition: transform 0.4s;
+  }
+
+  .btn .btnText {
+    grid-area: 1 / 1;
+    transform: translateY(calc(100% + 7px));
+  }
+
+  .close .btn::before {
+    transform: translateY(-9px);
+  }
+
+  .close .btn::after {
+    transform: translateY(9px);
+  }
+
+  .close .btn {
+    color: #fff;
+  }
+
+  .open .btn::before {
+    transform: rotate(45deg);
+  }
+
+  .open .btn::after {
+    transform: rotate(-45deg);
+  }
+
+  .open .btn .bar {
+    transform: scale(0);
+  }
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: grid;
+    place-items: center;
+    transform: translate(200px, -50%);
+    transition: transform 0.5s;
+    background-color: #004bb1;
+    border-radius: 50%;
+  }
+
+  .showBtn.btn {
+    transform: translate(0, -50%);
   }
 
   .list {
     display: flex;
     align-items: center;
     gap: 20px;
+    transition: transform 0.5s;
+  }
+
+  .hideList {
+    transform: translateY(-100px);
   }
 
   /* お問い合わせの装飾 */
