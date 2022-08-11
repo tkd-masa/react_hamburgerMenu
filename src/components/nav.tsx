@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "styles/nav.module.css";
 const Nav = () => {
   const [navIsOpen, setNavIsOpen]: [
@@ -9,6 +9,23 @@ const Nav = () => {
   const toggleNav = () => {
     setNavIsOpen((prev: boolean) => !prev);
   };
+
+  const beforePos = useRef(0);
+  const changeHeadNav = () => {
+    console.log(`pageYoffSet=${window.pageYOffset}`);
+    console.log(`beforePos=${beforePos.current}`);
+    if (window.pageYOffset < beforePos.current) {
+      console.log("ヘッダー非表示");
+    } else {
+      console.log("ヘッダー表示");
+    }
+    beforePos.current = window.pageYOffset;
+  };
+
+  useEffect(() => {
+    // イベントリスナーを登録
+    window.addEventListener("scroll", changeHeadNav);
+  }, []);
 
   return (
     <nav className={navIsOpen ? styles.open : styles.close}>
