@@ -10,14 +10,13 @@ const Nav = () => {
     setNavIsOpen((prev: boolean) => !prev);
   };
 
+  const [activeScroll, setActiveScroll] = useState(false);
   const beforePos = useRef(0);
   const changeHeadNav = () => {
-    console.log(`pageYoffSet=${window.pageYOffset}`);
-    console.log(`beforePos=${beforePos.current}`);
     if (window.pageYOffset < beforePos.current) {
-      console.log("ヘッダー非表示");
+      setActiveScroll(false);
     } else {
-      console.log("ヘッダー表示");
+      setActiveScroll(true);
     }
     beforePos.current = window.pageYOffset;
   };
@@ -29,11 +28,14 @@ const Nav = () => {
 
   return (
     <nav className={navIsOpen ? styles.open : styles.close}>
-      <button className={styles.btn} onClick={toggleNav}>
+      <button
+        className={`${styles.btn} ${activeScroll && styles.showBtn}`}
+        onClick={toggleNav}
+      >
         <span className={styles.bar}></span>
         <span className={styles.btnText}></span>
       </button>
-      <ul className={styles.list}>
+      <ul className={`${styles.list} ${activeScroll && styles.hideList}`}>
         <li>
           <button>会社紹介</button>
         </li>
