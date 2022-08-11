@@ -1,0 +1,32 @@
+.flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo img {
+  width: 43px;
+}
+
+/* .logo {
+  display: block;
+} */
+
+.logoText {
+  font-size: 20px;
+  text-align: left;
+}
+
+.logoSubText {
+  font-size: 12px;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .logo img {
+    width: 63px;
+  }
+  .logoSubText {
+    display: block;
+  }
+}
