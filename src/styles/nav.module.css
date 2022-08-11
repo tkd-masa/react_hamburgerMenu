@@ -55,6 +55,10 @@
     color: #fff;
   }
 
+  .open .btn {
+    color: white;
+  }
+
   .open .btn::before {
     transform: rotate(45deg);
   }
@@ -90,8 +94,35 @@
     transition: transform 0.5s;
   }
 
+  .list button {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
   .hideList {
     transform: translateY(-100px);
+  }
+
+  .open .list {
+    position: fixed;
+    inset: 0 -100% 0 -100%;
+    z-index: 100;
+    background: #004bb1;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+    transition: unset;
+  }
+
+  .open .list button {
+    font-size: 18px;
+    color: white;
+  }
+
+  .open .list li:first-child {
+    margin-top: 175px;
   }
 
   /* お問い合わせの装飾 */
@@ -99,6 +130,14 @@
     color: #fff;
     padding: 11px 26px 13px 26px;
     background-color: #195cb8;
+    border-radius: 50px;
+  }
+
+  .open .inquiry {
+    color: #fff;
+    padding: 11px 79px 13px 80px;
+    background-color: transparent;
+    border: 2px solid #fff;
     border-radius: 50px;
   }
 }
