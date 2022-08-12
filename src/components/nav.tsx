@@ -28,8 +28,22 @@ const Nav = () => {
 
   return (
     <nav className={navIsOpen ? styles.open : styles.close}>
+      {navIsOpen && (
+        // @ts-ignore
+        <style jsx global>
+          {`
+            body {
+              overflow: hidden;
+              position: fixed;
+              width: 100%;
+            }
+          `}
+        </style>
+      )}
       <button
-        className={`${styles.btn} ${activeScroll && styles.showBtn}`}
+        className={`${styles.btn} ${activeScroll && styles.showBtn} ${
+          navIsOpen && styles.showBtn
+        }`}
         onClick={toggleNav}
       >
         <span className={styles.bar}></span>
