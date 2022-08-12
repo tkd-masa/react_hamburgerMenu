@@ -105,7 +105,11 @@
 
   .open .list {
     position: fixed;
-    inset: 0 -100% 0 -100%;
+    /* inset: 0 -100% 0 -100%; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     z-index: 100;
     background: #004bb1;
     transform: none;
@@ -114,6 +118,17 @@
     gap: 30px;
     text-align: center;
     transition: unset;
+    animation: rightToLeft 0.5s forwards;
+  }
+
+  @keyframes rightToLeft {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
   }
 
   .open .list button {
