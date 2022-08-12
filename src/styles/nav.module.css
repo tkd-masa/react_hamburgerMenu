@@ -1,5 +1,6 @@
 /* デスクトップ */
 @media (min-width: 768px) {
+  /* ハンバーガーメニューボタン */
   .btn {
     all: unset;
     outline: revert;
@@ -7,8 +8,16 @@
     cursor: pointer;
     width: 80px;
     height: 80px;
-    position: relative;
     z-index: 200;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: grid;
+    place-items: center;
+    transform: translate(200px, -50%);
+    transition: transform 0.5s;
+    background-color: #004bb1;
+    border-radius: 50%;
   }
 
   /* ハンバーガーメニューボタンのテキスト */
@@ -26,6 +35,7 @@
     content: "MENU";
   }
 
+  /* ハンバーガーメニューのバー */
   .btn::before,
   .btn::after,
   .btn .bar {
@@ -71,22 +81,12 @@
     transform: scale(0);
   }
 
-  .btn {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    display: grid;
-    place-items: center;
-    transform: translate(200px, -50%);
-    transition: transform 0.5s;
-    background-color: #004bb1;
-    border-radius: 50%;
-  }
-
+  /* スクロール時にハンバーガーメニューを出現させる */
   .showBtn.btn {
     transform: translate(0, -50%);
   }
 
+  /* 初期表示のメニュー */
   .list {
     display: flex;
     align-items: center;
@@ -99,10 +99,12 @@
     font-weight: bold;
   }
 
+  /* スクロール時にメニューを上に隠す */
   .hideList {
     transform: translateY(-100px);
   }
 
+  /* ハンバーガーメニュー展開時のメニュー */
   .open .list {
     position: fixed;
     /* inset: 0 -100% 0 -100%; */
@@ -121,6 +123,7 @@
     animation: rightToLeft 0.5s forwards;
   }
 
+  /* ハンバーガーメニュー押下時に右からスライドさせる */
   @keyframes rightToLeft {
     from {
       transform: translateX(100%);
@@ -140,7 +143,7 @@
     margin-top: 175px;
   }
 
-  /* お問い合わせの装飾 */
+  /* お問い合わせ */
   .inquiry {
     color: #fff;
     padding: 11px 26px 13px 26px;
@@ -148,6 +151,7 @@
     border-radius: 50px;
   }
 
+  /* ハンバーガーメニュー展開時のお問い合わせ */
   .open .inquiry {
     color: #fff;
     padding: 11px 79px 13px 80px;
