@@ -2,18 +2,17 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  position: relative;
+  z-index: 200;
 }
 
-.logo img {
+.logo {
   width: 43px;
 }
 
-/* .logo {
-  display: block;
-} */
-
 .logoText {
   font-size: 20px;
+  font-weight: bold;
   text-align: left;
 }
 
@@ -22,8 +21,16 @@
   display: none;
 }
 
+.open .logo path {
+  fill: white;
+}
+.open .logoText,
+.open .logoSubText {
+  color: white;
+}
+
 @media (min-width: 768px) {
-  .logo img {
+  .logo {
     width: 63px;
   }
   .logoSubText {
