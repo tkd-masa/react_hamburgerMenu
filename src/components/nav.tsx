@@ -1,17 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+//@ts-nocheck
+import { useState, useEffect, useRef, useContext } from "react";
 import styles from "styles/nav.module.css";
+import { navIsOpenContext } from "components/header";
 const Nav = () => {
-  const [navIsOpen, setNavIsOpen]: [
-    boolean,
-    React.Dispatch<React.SetStateAction<boolean>>
-  ] = useState<boolean>(false);
-
-  const toggleNav = () => {
-    setNavIsOpen((prev: boolean) => !prev);
-  };
-
+  // headerコンポーネントからstateの値をuseContextで取得
+  const { navIsOpen, toggleNav } = useContext(navIsOpenContext);
+  // スクロールのstate管理
   const [activeScroll, setActiveScroll] = useState(false);
+  // スクロール量の保持
   const beforePos = useRef(0);
+  // PCスクロール時にヘッダーを入れ替える処理
   const changeHeadNav = () => {
     if (window.pageYOffset < beforePos.current) {
       setActiveScroll(false);

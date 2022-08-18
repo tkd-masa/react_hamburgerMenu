@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { navIsOpenContext } from "components/header";
 import styles from "styles/logo.module.css";
 
-const Logo = (navIsOpen: any) => {
+const Logo = () => {
+  // @ts-ignore
+  const { navIsOpen } = useContext(navIsOpenContext);
+  console.log(useContext(navIsOpenContext));
   return (
-    <button className={styles.flexContainer}>
+    <button className={`${styles.flexContainer} ${navIsOpen && styles.open}`}>
       <span className={styles.logo}>
-        {/* <img src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="" /> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="43.811"
