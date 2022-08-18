@@ -1,14 +1,159 @@
-/* デスクトップ */
-@media (min-width: 768px) {
-  /* ハンバーガーメニューボタン */
+/* 共通のcss
+--------------*/
+.btn {
+  all: unset;
+  outline: revert;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+}
+
+/* ハンバーガーメニューボタンのテキスト */
+.btnText {
+  font-size: 10px;
+  display: inline-block;
+  transform: translateY(4px);
+}
+
+.open .btn {
+  color: white;
+}
+
+.open .btnText::before {
+  content: "CLOSE";
+}
+
+.close .btn {
+  color: #004bb1;
+}
+
+.close .btnText::before {
+  content: "MENU";
+}
+
+.btn::before,
+.btn::after,
+.btn .bar {
+  grid-area: 1 / 1;
+  content: "";
+  display: block;
+  background-color: currentColor;
+  transition: transform 0.4s;
+}
+
+.open .btn::before {
+  transform: rotate(45deg);
+}
+
+.open .btn::after {
+  transform: rotate(-45deg);
+}
+
+.open .btn .bar {
+  transform: scale(0);
+}
+
+/* モバイル
+--------------*/
+@media (max-width: 767px) {
+  /* メニュー (オーバーレイ) */
   .btn {
     all: unset;
     outline: revert;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+    width: 20px;
+    height: 14px;
+    position: relative;
+    z-index: 200;
+  }
+
+  .close .btn {
+    color: #004bb1;
+  }
+
+  .open .btn {
+    color: white;
+  }
+
+  .btn {
+    display: grid;
+    place-items: center;
+  }
+
+  .btn::before,
+  .btn::after,
+  .btn .bar {
+    grid-area: 1 / 1;
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.4s;
+  }
+
+  .close .btn::before {
+    transform: translateY(-4px);
+  }
+
+  .close .btn::after {
+    transform: translateY(4px);
+  }
+
+  .list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    background: #004bb1;
+    color: white;
+    transition: transform 0.4s;
+  }
+
+  /* メニュー（オーバーレイ内の配置) */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .close .list {
+    transform: translateX(100%);
+  }
+
+  .list li:first-child {
+    margin-top: 110px;
+  }
+
+  .list button {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+  }
+
+  /* お問い合わせの装飾 */
+  .inquiry {
+    color: #fff;
+    padding: 11px 79px 13px 80px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    border-radius: 50px;
+  }
+}
+
+/* デスクトップ
+--------------*/
+@media (min-width: 768px) {
+  /* ハンバーガーメニューボタン */
+  .btn {
     width: 80px;
     height: 80px;
-    z-index: 200;
     position: absolute;
     top: 50%;
     right: 0;
@@ -20,32 +165,12 @@
     border-radius: 50%;
   }
 
-  /* ハンバーガーメニューボタンのテキスト */
-  .btnText {
-    font-size: 10px;
-    display: inline-block;
-    transform: translateY(4px);
-  }
-
-  .open .btnText::before {
-    content: "CLOSE";
-  }
-
-  .close .btnText::before {
-    content: "MENU";
-  }
-
   /* ハンバーガーメニューのバー */
   .btn::before,
   .btn::after,
   .btn .bar {
-    grid-area: 1 / 1;
-    content: "";
-    display: block;
     width: 30px;
     height: 3px;
-    background-color: currentColor;
-    transition: transform 0.4s;
   }
 
   .btn .btnText {
@@ -63,22 +188,6 @@
 
   .close .btn {
     color: #fff;
-  }
-
-  .open .btn {
-    color: white;
-  }
-
-  .open .btn::before {
-    transform: rotate(45deg);
-  }
-
-  .open .btn::after {
-    transform: rotate(-45deg);
-  }
-
-  .open .btn .bar {
-    transform: scale(0);
   }
 
   /* スクロール時にハンバーガーメニューを出現させる */
@@ -153,122 +262,6 @@
 
   /* ハンバーガーメニュー展開時のお問い合わせ */
   .open .inquiry {
-    color: #fff;
-    padding: 11px 79px 13px 80px;
-    background-color: transparent;
-    border: 2px solid #fff;
-    border-radius: 50px;
-  }
-}
-
-/* モバイル */
-@media (max-width: 767px) {
-  /* メニュー (オーバーレイ) */
-  .btn {
-    all: unset;
-    outline: revert;
-    -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-    width: 20px;
-    height: 14px;
-    position: relative;
-    z-index: 200;
-  }
-
-  /* ハンバーガーメニューボタンのテキスト */
-  .btnText {
-    font-size: 10px;
-    display: inline-block;
-    transform: translateY(4px);
-  }
-
-  .open .btnText::before {
-    content: "CLOSE";
-  }
-
-  .close .btnText::before {
-    content: "MENU";
-  }
-
-  .close .btn {
-    color: #004bb1;
-  }
-
-  .open .btn {
-    color: white;
-  }
-
-  .btn {
-    display: grid;
-    place-items: center;
-  }
-
-  .btn::before,
-  .btn::after,
-  .btn .bar {
-    grid-area: 1 / 1;
-    content: "";
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: currentColor;
-    transition: transform 0.4s;
-  }
-
-  .close .btn::before {
-    transform: translateY(-4px);
-  }
-
-  .close .btn::after {
-    transform: translateY(4px);
-  }
-
-  .open .btn::before {
-    transform: rotate(45deg);
-  }
-
-  .open .btn::after {
-    transform: rotate(-45deg);
-  }
-
-  .open .btn .bar {
-    transform: scale(0);
-  }
-
-  .list {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-    background: #004bb1;
-    color: white;
-    transition: transform 0.4s;
-  }
-
-  /* メニュー（オーバーレイ内の配置) */
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    text-align: center;
-  }
-
-  .close .list {
-    transform: translateX(100%);
-  }
-
-  .list li:first-child {
-    margin-top: 110px;
-  }
-
-  .list button {
-    color: white;
-  }
-
-  /* お問い合わせの装飾 */
-  .inquiry {
     color: #fff;
     padding: 11px 79px 13px 80px;
     background-color: transparent;
